@@ -13,7 +13,7 @@ def detect_person(image):
         list of bounding boxes in format [[x1,y1,x2,y2,confidence], ...]
     """
     # Initialize YOLO model
-    model = YOLO('yolov8n.pt')  # using the nano model, you can change to other versions
+    model = YOLO('./backend/app/yolov8n.pt')  # using the nano model, you can change to other versions
 
     # Run inference
     results = model(image)
