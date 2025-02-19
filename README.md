@@ -55,17 +55,12 @@ This will start the **backend, frontend, and database** services.
 ### 5️⃣ Run Locally (Alternative Method)
 #### Backend (FastAPI)
 ```sh
-cd backend
-python -m venv venv  # Create a virtual environment
-source venv/bin/activate  # Activate the virtual environment (Linux/macOS)
-venv\Scripts\activate  # (Windows)
-pip install -r requirements.txt  # Install dependencies
+pip install -r backend/app/requirements.txt  # Install dependencies
 uvicorn backend.app.main:app --reload
 ```
 
 #### Frontend (Next.js)
 ```sh
-cd frontend
 npm install  # Install dependencies
 npm run dev  # Start the development server
 ```
