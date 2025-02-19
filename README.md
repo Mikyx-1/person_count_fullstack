@@ -108,6 +108,9 @@ PERSON-DETECTION/
 ## 📜 License
 This project is licensed under the **MIT License**.
 
+
+[output.webm](https://github.com/user-attachments/assets/731eedbc-1d45-4a24-afcf-33fdefa5e446)
+
 ---
 🚀 **Enjoy using the Person Detection Web App!** 🎉
 
