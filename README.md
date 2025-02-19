@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Person Counter Web App
 
-## Getting Started
+## 📌 Overview
+This is a **Person Counter Web Application** that allows users to upload an image, detect the number of people present, and visualise the detected bounding boxes. The results, including the processed image and count, are stored in a **PostgreSQL database**. The application consists of a **FastAPI** backend and a **Next.js** frontend, deployed using **Docker Compose**.
 
-First, run the development server:
+## 🏗️ Architecture
+The application follows a **client-server architecture**:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Frontend:** Built with Next.js to provide a user-friendly interface for uploading images and displaying detection results.
+- **Backend:** Built with FastAPI, handling image processing and database operations.
+- **Database:** PostgreSQL with SQLAlchemy for storing detection results.
+- **Deployment:** Docker Compose for easy containerised deployment.
+
+## 🖥️ Algorithm
+The system uses **OpenCV and a person detection model** for image processing:
+
+1. **Image Upload**: Users upload an image through the frontend.
+2. **Preprocessing**: The image is sent to the FastAPI backend, where it is validated and saved.
+3. **Person Detection**: OpenCV or a deep learning model (like YOLO, SSD, or Haar Cascades) detects people in the image.
+4. **Bounding Box Visualisation**: Detected people are marked with bounding boxes on the image.
+5. **Result Storage**:
+   - The visualized image is saved in a `results/` folder.
+   - The detection count and image path are stored in PostgreSQL.
+6. **Response to Frontend**: The processed image and person count are sent back and displayed in the UI.
+
+## 🚀 How to Run the Application
+
+### 1️⃣ Prerequisites
+Ensure you have the following installed:
+- **Docker & Docker Compose**
+- **Python 3.7+** (if running locally)
+- **Node.js 20+** (for the frontend)
+
+### 2️⃣ Clone the Repository
+```sh
+git clone https://github.com/yourusername/person-detection-app.git
+cd person-detection-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3️⃣ Setup Environment Variables
+Create a `.env` file in the root directory and configure it with database details:
+```sh
+DATABASE_URL=postgresql://user:password@db:5432/person_detection_db
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4️⃣ Run with Docker (Recommended)
+```sh
+docker-compose up --build
+```
+This will start the **backend, frontend, and database** services.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5️⃣ Run Locally (Alternative Method)
+#### Backend (FastAPI)
+```sh
+cd backend
+python -m venv venv  # Create a virtual environment
+source venv/bin/activate  # Activate the virtual environment (Linux/macOS)
+venv\Scripts\activate  # (Windows)
+pip install -r requirements.txt  # Install dependencies
+uvicorn backend.app.main:app --reload
+```
 
-## Learn More
+#### Frontend (Next.js)
+```sh
+cd frontend
+npm install  # Install dependencies
+npm run dev  # Start the development server
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 6️⃣ Access the Application
+- **Frontend UI**: [http://localhost:3000](http://localhost:3000)
+- **Backend API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Folder Structure
+```
+PERSON-DETECTION/
+├── backend/          # FastAPI backend
+│   ├── app/
+│   │   ├── models.py  # Database models
+│   │   ├── count.py   # Person detection logic
+│   │   ├── main.py    # API endpoints
+│   │   ├── schemas.py # API data validation
+│   └── ...
+├── frontend/         # Next.js frontend
+│   ├── components/ui # UI components
+│   ├── app/page.tsx  # Main page
+│   └── ...
+├── docker-compose.yml # Docker configuration
+├── .env              # Environment variables
+└── README.md         # Project documentation
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎯 API Endpoints
+| Method | Endpoint  | Description |
+|--------|----------|-------------|
+| `POST` | `/upload` | Uploads an image and returns the detected person count and processed image |
 
-## Deploy on Vercel
+## 🔧 Technologies Used
+- **Backend:** FastAPI, OpenCV, SQLAlchemy
+- **Frontend:** Next.js, Tailwind CSS
+- **Database:** PostgreSQL
+- **Deployment:** Docker, Docker Compose
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 License
+This project is licensed under the **MIT License**.
+
+---
+🚀 **Enjoy using the Person Detection Web App!** 🎉
+
