@@ -75,6 +75,7 @@ PERSON-DETECTION/
 ├── app/               # Next.js frontend application 
 │   ├── globals.css    # Global styles for the frontend
 │   ├── page.tsx       # Main UI page
+│   ├── layout.tsx     # Frontend layout
 |
 ├── backend/           # FastAPI backend
 │   ├── app/
