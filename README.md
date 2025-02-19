@@ -127,7 +127,8 @@ PERSON-DETECTION/
 ## 🎥 DEMO 
 
 
-[output.webm](https://github.com/user-attachments/assets/731eedbc-1d45-4a24-afcf-33fdefa5e446)
+[output.webm](https://github.com/user-attachments/assets/d0ccbe58-8412-46cd-b14e-bf357c725ffd)
+
 
 ---
 🚀 **Enjoy using the Person Detection Web App!** 🎉
