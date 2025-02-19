@@ -14,7 +14,7 @@ class PersonData(Base):
     __tablename__ = "person_data"
     
     id = Column(Integer, primary_key=True, index=True)
-    time = Column(DateTime(timezone=True), default=func.now())
+    time = Column(DateTime(timezone=True))
     num_bboxes = Column(Integer)
     result_image_file_path = Column(String)
 

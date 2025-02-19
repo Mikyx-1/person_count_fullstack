@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 from .models import SessionLocal, PersonData
-
+from datetime import datetime
 # Function to add data to the database
 def add_person_data(db_session: Session, num_bboxes: int, result_image_file_path: str):
-    db_entry = PersonData(num_bboxes=num_bboxes, result_image_file_path=result_image_file_path)
+    db_entry = PersonData(time=datetime.now(), num_bboxes=num_bboxes, result_image_file_path=result_image_file_path)
     db_session.add(db_entry)
     db_session.commit()
     db_session.refresh(db_entry)
