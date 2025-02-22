@@ -1,10 +1,12 @@
 fastapi==0.115.8
 numpy<2
-opencv_contrib_python==4.9.0.80
-opencv_python==4.9.0.80
+opencv_python<=4.12
 pydantic==2.10.6
 SQLAlchemy==2.0.20
-ultralytics==8.0.145
+torch<=2.0.1
+torchvision<=0.15.2
+torchaudio<=2.0.1
+ultralytics
 psycopg2-binary
 uvicorn
 python-multipart==0.0.8
