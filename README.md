@@ -121,8 +121,8 @@ PERSON_COUNT_FULLSTACK/
 
 ## 🎥 DEMO 
 
+[output_no_audio.webm](https://github.com/user-attachments/assets/85bd3e35-ff74-4644-9b9e-fed9e7783e72)
 
-[output.webm](https://github.com/user-attachments/assets/d0ccbe58-8412-46cd-b14e-bf357c725ffd)
 
 
 ---
