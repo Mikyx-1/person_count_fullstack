@@ -15,7 +15,8 @@
 
 # next.js
 /.next/
-/out/
+/frontend/.next/      # Ignore frontend's .next folder and everything inside it
+/frontend/.next/*
 
 # production
 /build
@@ -39,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# backend folders to ignore everything inside
+/backend/results/     # Ignore backend results folder
+/backend/results/*    # Ignore all files in results folder
+/backend/uploads/     # Ignore backend uploads folder
+/backend/uploads/*    # Ignore all files in uploads folder
