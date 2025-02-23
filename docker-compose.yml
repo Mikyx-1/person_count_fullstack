@@ -8,6 +8,7 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
+      TZ: Asia/Ho_Chi_Minh # Set timezone to GMT+7
     ports:
       - "5432:5432"
     volumes:
@@ -26,6 +27,7 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://user:password@person-detection-db:5432/mydb
+      TZ: Asia/Ho_Chi_Minh # Set timezone to GMT+7
     ports:
       - "8000:8000"
     volumes:
@@ -39,6 +41,8 @@ services:
     container_name: person-detection-frontend
     depends_on:
       - backend
+    environment:
+      TZ: Asia/Ho_Chi_Minh # Set timezone to GMT+7
     ports:
       - "3000:3000"
     volumes:
@@ -46,11 +50,11 @@ services:
       - /app/node_modules
     command: ["npm", "run", "dev"]
 
-  pgadmin: # Add this new service
+  pgadmin:
     image: dpage/pgadmin4
     container_name: person-detection-pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_EMAIL: admin@test.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
