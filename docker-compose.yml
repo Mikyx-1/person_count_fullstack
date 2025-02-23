@@ -12,6 +12,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d mydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   backend:
     build: ./backend
@@ -19,7 +24,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql://user:password@db:5432/mydb
+      DATABASE_URL: postgresql://user:password@person-detection-db:5432/mydb
     ports:
       - "8000:8000"
     volumes:
@@ -28,7 +33,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend  # Point to frontend directory
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: person-detection-frontend
     depends_on:
