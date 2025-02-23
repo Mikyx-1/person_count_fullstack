@@ -31,43 +31,53 @@ The system uses **OpenCV and a person detection model** for image processing:
 ### 1️⃣ Prerequisites
 Ensure you have the following installed:
 - **Docker & Docker Compose**
-- **Python 3.7+** (if running locally)
-- **Node.js 20+** (for the frontend)
 
 ### 2️⃣ Clone the Repository
 ```sh
-git clone https://github.com/yourusername/person-detection-app.git
+git clone https://github.com/Mikyx-1/person_count_fullstack.git
 cd person-detection-app
 ```
 
 ### 3️⃣ Setup Environment Variables
 Create a `.env` file in the root directory and configure it with database details:
 ```sh
-DATABASE_URL=postgresql://user:password@db:5432/person_detection_db
+# .env
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+POSTGRES_DB=mydb
+TZ=Asia/Ho_Chi_Minh
+
+# pgAdmin
+PGADMIN_DEFAULT_EMAIL=admin@test.com
+PGADMIN_DEFAULT_PASSWORD=admin
+
 ```
 
 ### 4️⃣ Run with Docker (Recommended)
 ```sh
 docker-compose up --build
 ```
-This will start the **backend, frontend, and database** services.
+This will start the **backend, frontend, database**, and **pgAdmin** services.
 
-### 5️⃣ Run Locally (Alternative Method)
-#### Backend (FastAPI)
-```sh
-pip install -r backend/app/requirements.txt  # Install dependencies
-uvicorn backend.app.main:app --reload
-```
-
-#### Frontend (Next.js)
-```sh
-npm install  # Install dependencies
-npm run dev  # Start the development server
-```
-
-### 6️⃣ Access the Application
+### 5️⃣ Access the Application
 - **Frontend UI**: [http://localhost:3000](http://localhost:3000)
 - **Backend API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **pgAdmin**: [http://localhost:5050](http://localhost:5050)
+
+### 6️⃣ pgAdmin Setup
+- **Login Credentials:**
+  - **Email:** `admin@test.com`
+  - **Password:** `admin`
+- **Add New Server:**
+  - **Name:** `person-detection-db`
+  - **Host:** `db`
+  - **Port:** `5432`
+  - **Username:** `user`
+  - **Password:** `password`
+
+Once connected, you can browse the database and inspect tables and data.
+
+
 
 ## 📂 Folder Structure
 ```
