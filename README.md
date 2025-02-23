@@ -71,45 +71,30 @@ npm run dev  # Start the development server
 
 ## 📂 Folder Structure
 ```
-PERSON-DETECTION/
-├── app/               # Next.js frontend application 
-│   ├── globals.css    # Global styles for the frontend
-│   ├── page.tsx       # Main UI page
-│   ├── layout.tsx     # Frontend layout
-|
-├── backend/           # FastAPI backend
+PERSON_COUNT_FULLSTACK/
+├── backend/
 │   ├── app/
-│   │   ├── models.py  # Database models (SQLAlchemy)
-│   │   ├── count.py   # Person detection logic
-│   │   ├── main.py    # API endpoints
-│   │   ├── schemas.py # API data validation
-│   │   ├── yolov8n.pt # AI model to count people
-│   │   ├── requirements.txt # Neccessary libs to run backend
-│   └── ...
-├── components/                # Reusable UI components for the frontend
-|   ├── ui                     # UI-specific components
-|   |   ├── fileUpload.tsx     # File upload component
-|   |   ├── imageDisplay.tsx   # Component for displaying the processed image
-|
-├── node_modules/              # Dependencies installed via npm (Next.js)
-│   ├── ...
-|
-├── public/                    # Static assets for the frontend
-|   ├── file.svg               # Icon for file upload
-|   ├── globe.svg              # Example static asset
-|   ├── ..
-├── uploads/   # Place where original images are saved.
-|   ├── image_1.jpg # Example
-|   ├── ...
-|
-├── results/   # Place where processed images are saved.
-|   ├── processed_image_1.jpg # Example
-|   ├── ...
-├── docker-compose.yml # Docker configuration
-├── package.json       # Dependencies & scripts for the frontend
-├── ...
-├── .env              # Environment variables
-└── README.md         # Project documentation
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── schemas.py
+│   │   ├── ...
+│   ├── requirements.txt
+│   ├── Dockerfile
+├── frontend/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── fileUpload.tsx
+│   │   │   ├── imageDisplay.tsx
+│   ├── node_modules/
+│   ├── public/
+│   ├── Dockerfile
+├── .gitignore
+├── .env
+├── docker-compose.yml
+└── README.md
 ```
 
 ## 🎯 API Endpoints
