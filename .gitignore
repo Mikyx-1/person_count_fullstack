@@ -41,8 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# backend folders to ignore everything inside
-/backend/results/     # Ignore backend results folder
-/backend/results/*    # Ignore all files in results folder
-/backend/uploads/     # Ignore backend uploads folder
-/backend/uploads/*    # Ignore all files in uploads folder
+*.pt
+*.pyc
+/backend/results/
+/backend/uploads/
