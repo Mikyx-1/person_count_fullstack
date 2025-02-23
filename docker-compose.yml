@@ -1,4 +1,4 @@
-version: '3.7'
+version: '2.2'
 
 services:
   db:
@@ -22,7 +22,8 @@ services:
     build: ./backend
     container_name: person-detection-backend
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       DATABASE_URL: postgresql://user:password@person-detection-db:5432/mydb
     ports:
