@@ -88,13 +88,16 @@ PERSON_COUNT_FULLSTACK/
 │   │   ├── main.py
 │   │   ├── models.py
 │   │   ├── schemas.py
+│   │   ├── endpoints.py
 │   │   ├── ...
 │   ├── requirements.txt
 │   ├── Dockerfile
 ├── frontend/
 │   ├── app/
+│   │   ├── history/  # For history records web page
+│   │   │   ├── page.tsx
 │   │   ├── layout.tsx
-│   │   ├── page.tsx
+│   │   ├── page.tsx  # Main page
 │   ├── components/
 │   │   ├── ui/
 │   │   │   ├── fileUpload.tsx
