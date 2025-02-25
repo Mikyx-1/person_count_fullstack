@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy.orm import Session
 from .models import SessionLocal, PersonData
 from sqlalchemy.sql.sqltypes import String
+from datetime import datetime
 
 router = APIRouter()
 
@@ -11,7 +12,9 @@ def get_history(
     limit: int = Query(10, alias="limit", ge=1, le=100),
     search_by_path: str = Query(None),
     min_people: int = Query(None, ge=0),
-    max_people: int = Query(None, ge=0)
+    max_people: int = Query(None, ge=0),
+    start_time: str = Query(None),
+    end_time: str = Query(None)
 ):
     """Fetches paginated history records with optional search and filtering."""
     db: Session = SessionLocal()
@@ -28,11 +31,24 @@ def get_history(
     if max_people is not None:
         query = query.filter(PersonData.num_bboxes <= max_people)
 
+    # Apply time range filter
+    if start_time:
+        try:
+            start_time_dt = datetime.fromisoformat(start_time)
+            query = query.filter(PersonData.time >= start_time_dt)
+        except ValueError:
+            raise HTTPException(status_code=400, detail="Invalid start_time format. Use ISO format: YYYY-MM-DDTHH:MM:SS")
+
+    if end_time:
+        try:
+            end_time_dt = datetime.fromisoformat(end_time)
+            query = query.filter(PersonData.time <= end_time_dt)
+        except ValueError:
+            raise HTTPException(status_code=400, detail="Invalid end_time format. Use ISO format: YYYY-MM-DDTHH:MM:SS")
+
     # Pagination
     total_records = query.count()
     history_records = query.offset((page - 1) * limit).limit(limit).all()
-
-    # print(f"Total records found: {total_records}")  # Debugging
 
     return {
         "total": total_records,

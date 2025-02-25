@@ -8,13 +8,21 @@ const HistoryPage = () => {
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
   const [totalPages, setTotalPages] = useState(1)
+  const [startTime, setStartTime] = useState('')
+  const [endTime, setEndTime] = useState('')
+  const [minPeople, setMinPeople] = useState(0)
+  const [maxPeople, setMaxPeople] = useState('')
 
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/history', {
-          params: { page, search_by_path: search } // Changed to search by result image path
-        })
+        const params = { page, search_by_path: search }
+        if (startTime) params.start_time = startTime
+        if (endTime) params.end_time = endTime
+        if (minPeople !== '') params.min_people = minPeople
+        if (maxPeople !== '') params.max_people = maxPeople
+
+        const response = await axios.get('http://localhost:8000/history', { params })
         setRecords(response.data.records)
         setTotalPages(response.data.total_pages)
       } catch (error) {
@@ -23,7 +31,17 @@ const HistoryPage = () => {
     }
 
     fetchRecords()
-  }, [page, search])
+  }, [page, search, startTime, endTime, minPeople, maxPeople])
+
+  const clearDateFilter = () => {
+    setStartTime('')
+    setEndTime('')
+  }
+
+  const clearCountFilter = () => {
+    setMinPeople(0)
+    setMaxPeople('')
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -31,11 +49,45 @@ const HistoryPage = () => {
 
       <input
         type="text"
-        placeholder="Search by result image path..." // Updated search placeholder
+        placeholder="Search by result image path..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         className="block w-full p-2 mb-4 border rounded-lg text-black"
       />
+
+      <div className="flex space-x-4 mb-4">
+        <input
+          type="datetime-local"
+          value={startTime}
+          onChange={(e) => setStartTime(e.target.value)}
+          className="p-2 border rounded-lg text-black"
+        />
+        <input
+          type="datetime-local"
+          value={endTime}
+          onChange={(e) => setEndTime(e.target.value)}
+          className="p-2 border rounded-lg text-black"
+        />
+        <button onClick={clearDateFilter} className="p-2 bg-red-500 text-white rounded-lg">Clear Date Filter</button>
+      </div>
+
+      <div className="flex space-x-4 mb-4">
+        <input
+          type="number"
+          placeholder="Min People"
+          value={minPeople}
+          onChange={(e) => setMinPeople(e.target.value)}
+          className="p-2 border rounded-lg text-black"
+        />
+        <input
+          type="number"
+          placeholder="Max People"
+          value={maxPeople}
+          onChange={(e) => setMaxPeople(e.target.value)}
+          className="p-2 border rounded-lg text-black"
+        />
+        <button onClick={clearCountFilter} className="p-2 bg-red-500 text-white rounded-lg">Clear Count Filter</button>
+      </div>
 
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow-lg rounded-lg">
