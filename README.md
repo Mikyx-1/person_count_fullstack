@@ -3,7 +3,8 @@
 ## 📌 Overview
 This is a **Person Counter Web Application** that allows users to upload an image, detect the number of people present, and visualise the detected bounding boxes. The results, including the processed image and count, are stored in a **PostgreSQL database**. The application consists of a **FastAPI** backend and a **Next.js** frontend, deployed using **Docker Compose**.
 
-![Screenshot from 2025-02-19 08-24-42](https://github.com/user-attachments/assets/3183f68d-4435-49c3-b94a-3afa676d3c43)
+![Screenshot from 2025-02-26 00-15-46](https://github.com/user-attachments/assets/9feaf1f7-2e0b-49fb-9268-d497a8fed579)
+
 
 ## 🏗️ Architecture
 
@@ -121,8 +122,7 @@ PERSON_COUNT_FULLSTACK/
 
 ## 🎥 DEMO 
 
-[output_no_audio.webm](https://github.com/user-attachments/assets/85bd3e35-ff74-4644-9b9e-fed9e7783e72)
-
+[output.webm](https://github.com/user-attachments/assets/e0ad5d95-26ae-41a8-bd01-a800bf275fe0)
 
 
 ---
