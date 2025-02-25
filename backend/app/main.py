@@ -9,6 +9,7 @@ from .models import SessionLocal, PersonData
 from .schemas import ImageUploadResponse
 import cv2
 from .count import count_person_in_img
+from .endpoints import router as history_router
 
 app = FastAPI()
 db_session = SessionLocal()
@@ -21,7 +22,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+app.include_router(history_router)
 # Ensure directories exist
 Path("uploads").mkdir(parents=True, exist_ok=True)
 Path("results").mkdir(parents=True, exist_ok=True)
