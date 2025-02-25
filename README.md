@@ -15,6 +15,20 @@ The application follows a **client-server architecture**:
 - **Database:** PostgreSQL with SQLAlchemy for storing detection results.
 - **Deployment:** Docker Compose for easy containerised deployment.
 
+## ✨ Features
+
+The application provides a robust set of features for counting person and result management:
+
+- **Person Count:** Upload an image, and the system detects and counts the number of people in the image. A bounding box is drawn around each detected person, and the final count is displayed along with the processed image.
+
+- **View Database:** A dedicated history page allows users to view all previous detection results, including the timestamp, number of people detected, and the path to the processed image.
+
+- **Filter by Result Image Path:** Users can search and filter records based on the file path of the processed images, allowing quick access to specific images stored in the system.
+
+- **Filter by Date:** Users can filter the history records by selecting a specific date range, making it easy to find detection results within a given timeframe.
+
+- **Filter by Number of People:** Users can filter results based on the number of people detected, specifying a minimum and/or maximum count for more focused searches.
+
 ## 🖥️ Algorithm
 The system uses **OpenCV and a person detection model** for image processing:
 
