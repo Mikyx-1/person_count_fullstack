@@ -51,6 +51,11 @@ const HistoryPage = () => {
     )
   }
 
+  const handleMinPeopleChange = (e) => {
+    const value = Number(e.target.value)
+    setMinPeople(value < 0 ? 0 : value)
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-3xl font-extrabold mb-6 text-black text-center">History Records</h1>
@@ -84,7 +89,7 @@ const HistoryPage = () => {
           type="number"
           placeholder="Min People"
           value={minPeople}
-          onChange={(e) => setMinPeople(e.target.value)}
+          onChange={handleMinPeopleChange}
           className="p-2 border rounded-lg text-black"
         />
         <input
