@@ -43,6 +43,14 @@ const HistoryPage = () => {
     setMaxPeople('')
   }
 
+  const highlightSearch = (text) => {
+    if (!search) return text
+    const regex = new RegExp(`(${search})`, 'gi')
+    return text.split(regex).map((part, index) =>
+      part.toLowerCase() === search.toLowerCase() ? <span key={index} className="bg-yellow-300 font-bold">{part}</span> : part
+    )
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-3xl font-extrabold mb-6 text-black text-center">History Records</h1>
@@ -111,7 +119,7 @@ const HistoryPage = () => {
                     className="w-32 h-32 object-cover rounded-lg"
                   />
                 </td>
-                <td className="p-4 text-black align-middle">{record.result_image_file_path}</td>
+                <td className="p-4 text-black align-middle">{highlightSearch(record.result_image_file_path)}</td>
               </tr>
             ))}
           </tbody>
